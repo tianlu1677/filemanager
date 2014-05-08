@@ -1,10 +1,19 @@
 Rails.application.routes.draw do
 
 
+  devise_for :users
+
   root 'static_pages#home'
 
   match '/help',  to: 'static_pages#help', via: 'get'
+  match '/about',  to: 'static_pages#about', via: 'get'
+  match  '/xianshi', to: 'static_pages#xianshi', via: 'get'
+  match  '/front', to: 'static_pages#front', via: 'get'
+  match  '/uploadfile', to: 'static_pages#uploadfile', via: 'get'
+  match  '/profile', to: 'static_pages#profile', via: 'get'
 
+
+  resources :attachments
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

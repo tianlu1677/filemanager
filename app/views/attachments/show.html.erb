@@ -1,0 +1,22 @@
+
+<div class="container">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>attachment name :</strong>
+  <%= @attachment.title %>
+</p>
+
+<p>
+  <strong>leibie:</strong>
+  <%= @attachment.attachment_category %>
+</p>
+<p>
+  <%=  %>
+  <%= image_tag(@attachment.link_url) %>
+</p>
+
+<%= link_to 'Edit', edit_attachment_path(@attachment) %>
+
+  <%= link_to 'Destroy', @attachment, method: :delete, data: { confirm: 'Are you sure?' } %>
+ </div>
