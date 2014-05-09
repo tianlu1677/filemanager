@@ -8,8 +8,13 @@
     <div class = "span6 offset3">
       <%= form_for @attachment,  html: {:multipart => true} do |f| %>
           <%= image_tag(f.object.link_url) %>
+
+
+          <%= f.object.attachment_size.to_s + "KB" %>
+
           <%= f.label :title %>
           <%= f.text_field :title %>
+
 
           <%= f.label :attachment_category %>
           <%= f.text_field :attachment_category %>

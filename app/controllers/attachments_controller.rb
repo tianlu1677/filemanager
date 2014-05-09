@@ -2,7 +2,7 @@ class AttachmentsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @attachments = Attachment.all
+    @attachments = Attachment.page(params[:page] || 1).per(3)
   end
   def new
     @attachment = Attachment.new

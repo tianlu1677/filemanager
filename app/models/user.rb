@@ -38,6 +38,8 @@ class User
   has_many  :attachments, class_name: "Attachment", as: :viewable
   accepts_nested_attributes_for :attachments
 
+  has_one :profile
+
 
   class << self
     def serialize_from_session(key, salt)

@@ -2,6 +2,8 @@ class Attachment
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  before_save  :update_attachment_attr
+
   field :viewable_id, type: Integer #
   field :title, type: String #文件重命名
   field :attachment_width, type: Integer # 文件宽度
@@ -16,5 +18,17 @@ class Attachment
   belongs_to :viewable, polymorphic: true
 
   mount_uploader :link, AttachmentUploader
+
+  ##获取上传文件的类型和大小
+  private
+
+  def update_attachment_attr
+    if link.present?
+      self.attachment_size = link.file.size
+      self.attachment_type = link.file.content_type
+    end
+  end
+
+
 
 end

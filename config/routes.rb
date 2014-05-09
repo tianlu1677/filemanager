@@ -10,10 +10,11 @@ Rails.application.routes.draw do
   match  '/xianshi', to: 'static_pages#xianshi', via: 'get'
   match  '/front', to: 'static_pages#front', via: 'get'
   match  '/uploadfile', to: 'static_pages#uploadfile', via: 'get'
-  match  '/profile', to: 'static_pages#profile', via: 'get'
+  # match  '/profile', to: 'static_pages#profile', via: 'get'
 
 
   resources :attachments
+  resources :profiles
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

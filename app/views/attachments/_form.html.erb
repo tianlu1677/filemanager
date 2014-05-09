@@ -4,15 +4,16 @@
 <div class="row">
   <div class = "span6 offset3">
     <%= form_for @attachment,  html: {:multipart => true} do |f| %>
-        <%= f.label :title %>
-        <%= f.text_field :title %>
-
-        <%= f.label :attachment_category %>
-        <%= f.text_field :attachment_category %>
-
+        <%= f.label "文件名" %>
+        <%= f.text_field :title %><br/>
+        <p>
+        <%= f.label "文件类别" %>
+        <%= f.text_field :attachment_category %><br/>
+        </p>
+        <p>
         <%= f.file_field :link      %>
         <%= f.submit "上传文件",class: "btn btn-large btn-primary" %>
-
+        </p>
     <% end %>
 </div>
 </div>

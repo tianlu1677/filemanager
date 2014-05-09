@@ -1,0 +1,41 @@
+
+<%#= render 'form' %>
+
+<div class="container">
+
+
+
+    <div class="list-group">
+      <a href="#" class="list-group-item active">
+        个人信息
+      </a>
+      <a href="#" class="list-group-item">修改密码</a>
+      <a href="#" class="list-group-item">修个信息</a>
+      <a href="#" class="list-group-item">查看上传的文件</a>
+      <a href="#" class="list-group-item">查看收藏的文件</a>
+    </div>
+
+
+
+
+  <h1>修改个人信息</h1>
+  <div class="row">
+    <div class = "span6 offset3">
+      <%= form_for @profile,  html: {:multipart => true} do |f| %>
+          <%= f.label :nickname %>
+          <%= f.text_field :nickname %>
+
+          <%= f.label :age %>
+          <%= f.text_field :age %>
+
+          <%= f.label :gender %>
+          <%= f.text_field :gender %>
+
+          <%= f.label :birthday %>
+          <%= f.text_field :birthday %>
+
+          <%= f.submit "保存",class: "btn btn-large btn-primary" %>
+        <% end %>
+    </div>
+  </div>
+</div>
