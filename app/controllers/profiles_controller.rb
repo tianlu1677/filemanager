@@ -29,9 +29,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
     if @profile.update_attributes(profile_params)
       flash[:success] ="个人信息更新成功"
-      render 'show'
-    else
-      render 'edit'
+      
     end
   end
 

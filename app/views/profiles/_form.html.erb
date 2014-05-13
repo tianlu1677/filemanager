@@ -1,26 +1,31 @@
 <div class="container">
 
-
-<h1>个人信息</h1>
+<div class="col-md-2"></div>
+<div class="col-md-8">
+<h3>个人信息</h3>
 
 <div class="row">
   <div class = "span6 offset3">
-    <%= form_for @profile,  html: {:multipart => true} do |f| %>
-        <%= f.label :nickname %>
-        <%= f.text_field :nickname %>
+    <%= form_for @profile  do |f| %>
+        
+        <%= f.text_field :nickname, class: "form-control", placeholder: "昵称" %>
 
-        <%= f.label :age %>
-        <%= f.text_field :age %>
-
-        <%= f.label :gender %>
-        <%= f.text_field :gender %>
-
-        <%= f.label :birthday %>
-        <%= f.text_field :birthday %>
-
+        <br/>
+        <%= f.text_field :age, class: "form-control", placeholder: "年龄" %>
+        <br/>
+        
+        <%= f.text_field :gender, class: "form-control", placeholder: "性别"%>
+        <br/>
+        
+        <%= f.text_field :birthday, class: "form-control", placeholder: "生日" %>
+        <br/>
         <%= f.submit "保存",class: "btn btn-large btn-primary" %>
-
+        <%= link_to "返回", attachments_url, class: "btn btn-default" %>
     <% end %>
+    <br/>
+    <br/>
 </div>
 </div>
+
+<div class="col-md-2"></div>
 </div>

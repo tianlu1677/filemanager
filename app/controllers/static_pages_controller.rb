@@ -15,6 +15,10 @@ class StaticPagesController < ApplicationController
 
   end
 
+  def detail
+    
+  end
+
   def uploadfile
 
   end

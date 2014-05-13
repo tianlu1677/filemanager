@@ -1,13 +1,49 @@
 <div class="container">
   <div class="row clearfix">
     <div class="col-md-12 column">
+       <div class="col-md-offset-10" style="padding-bottom: 10px;">
+          <%= link_to new_user_registration_url do %>
+              <button class="btn-primary btn-lg">注册</button>
+          <% end %>
+          <%= link_to new_user_session_url do %>
+              <button class="btn-default btn-lg">登陆</button>
+          <% end %>        
+        </div>
       <div class="jumbotron">
         <h1>
           欢迎来到我的文件管理系统
         </h1>
 
         <p>
-          文件管理是操作系统的五大职能之一，主要涉及文件的逻辑组织和物理组织，目录的结构和管理。所谓文件管理 ....
+          文件管理系统由来已久，这个文件管理系统可以通过上传文件，添加描述，然后在前台通过标签来搜索
+          ，同时也可以基于时间和文件的大小来排序。<br/>
+          实现该系统，主要使用的技术有：<br/>
+          <ol style="color: green">
+          <li>
+            一、Ruby on rails[ruby 2.1.1 & rails 4.1.0](主体框架)
+          </li>
+           <li>
+            二、Mongodb(nosql数据库，作为数据存储)
+          </li>
+           <li>
+            三、git（来实现版本控制，代码存放在github上）
+          </li>
+           <li>
+            四、bootstrap 3 和 HTML5、CSS3、JQuery 2.1.0(实现页面效果)
+          </li>
+          <li>
+            五、Mac ox 10.9.2 (主要开发平台)
+          </li>
+           <li>
+            六、Balssmiq(原型工具)
+          </li>
+          <li>
+            七、部署时选择部署在阿里云上<br/>
+               选择的是ubuntu12.04 + unicorn + nginx1.19
+          </li>
+
+
+          </ol>
 
         </p>
 
@@ -16,22 +52,7 @@
         </p>
       </div>
       <div class="row clearfix">
-
-
-        <div>
-          <%= link_to new_user_registration_url do %>
-              <button class="btn-primary btn-lg">注册</button>
-          <% end %>
-          <%= link_to new_user_session_url do %>
-              <button class="btn-danger btn-lg">登陆</button>
-          <% end %>
-          <%= link_to destroy_user_session_path do %>
-              <button class="btn-danger btn-lg">注销</button>
-          <% end %>
-          <%= link_to new_attachment_url do %>
-              <button class="btn-danger btn-lg">上传文件</button>
-          <% end %>
-        </div>
+       
       </div>
 
 

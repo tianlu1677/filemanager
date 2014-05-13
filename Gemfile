@@ -35,7 +35,7 @@ gem 'spring',        group: :development
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+ gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -47,6 +47,6 @@ gem 'spring',        group: :development
 gem 'bootstrap-sass'
 # gem 'bootstrap3-kaminari-views'
 gem 'kaminari'
-
+gem 'mongoid_taggable'
 
 

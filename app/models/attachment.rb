@@ -1,6 +1,10 @@
 class Attachment
   include Mongoid::Document
-  include Mongoid::Timestamps
+  include Mongoid::Timestamps   # 标签
+  include Mongoid::Taggable
+
+  # validates :title, presence: true, length: { in: 1..20 }
+  # validates :attachment_category, :link, presence: true,
 
   before_save  :update_attachment_attr
 
@@ -13,11 +17,16 @@ class Attachment
   field :attachment_name, type: String # 文件原名称
   field :attachment_updated_at, type: DateTime # 文件上传时间
   field :attachment_category, type: String # 文件所属的类别
+  field :attachment_content, type: String  #文件简介
   field :link, type: String # 文件链接
 
   belongs_to :viewable, polymorphic: true
 
   mount_uploader :link, AttachmentUploader
+
+  scope :sort, lambda{ |sort_by| desc(sort_by) }
+
+
 
   ##获取上传文件的类型和大小
   private
@@ -28,7 +37,4 @@ class Attachment
       self.attachment_type = link.file.content_type
     end
   end
-
-
-
 end

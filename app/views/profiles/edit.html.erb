@@ -1,41 +1,40 @@
 
-<%#= render 'form' %>
-
 <div class="container">
-
-
-
-    <div class="list-group">
-      <a href="#" class="list-group-item active">
-        个人信息
-      </a>
-      <a href="#" class="list-group-item">修改密码</a>
-      <a href="#" class="list-group-item">修个信息</a>
-      <a href="#" class="list-group-item">查看上传的文件</a>
-      <a href="#" class="list-group-item">查看收藏的文件</a>
-    </div>
-
-
-
-
-  <h1>修改个人信息</h1>
+<div class="col-md-3">
+  <div class="list-group">
+    <a href="#" class="list-group-item active">
+      个人信息
+    </a>
+    <a href="#" class="list-group-item">修改密码</a>
+    <a href="#" class="list-group-item">修个信息</a>
+    <a href="#" class="list-group-item">查看上传的文件</a>
+    <a href="#" class="list-group-item">查看收藏的文件</a>
+  </div>
+</div>
+<div class="col-md-5">
+  <h3>修改个人信息</h3>
   <div class="row">
     <div class = "span6 offset3">
       <%= form_for @profile,  html: {:multipart => true} do |f| %>
-          <%= f.label :nickname %>
-          <%= f.text_field :nickname %>
 
-          <%= f.label :age %>
-          <%= f.text_field :age %>
+      <label class="col-sm-2 control-label">昵称</label>
+      <%= f.text_field :nickname, class: "form-control", placeholder: "昵称" %>
 
-          <%= f.label :gender %>
-          <%= f.text_field :gender %>
+      <label class="col-sm-2 control-label">年龄</label>
+      <%= f.text_field :age, class: "form-control", placeholder: "年龄" %>
+      
+      <label class="col-sm-2 control-label">性别</label>
+      <%= f.text_field :gender, class: "form-control", placeholder: "性别"%>
+      
+      <label class="col-sm-2 control-label">生日</label>
+      <%= f.text_field :birthday, class: "form-control", placeholder: "生日" %>
+      <br/>
+      <%= f.submit "保存",class: "btn btn-large btn-primary" %>
+      <%= link_to "返回", attachments_url, class: "btn btn-default" %>
+      <% end %>
 
-          <%= f.label :birthday %>
-          <%= f.text_field :birthday %>
 
-          <%= f.submit "保存",class: "btn btn-large btn-primary" %>
-        <% end %>
     </div>
   </div>
+</div>
 </div>

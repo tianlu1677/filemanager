@@ -1,0 +1,8 @@
+.redcar
+pkg/
+.rvmrc
+.idea/
+.rbenv-gemsets
+.rbenv-version
+Gemfile.lock
+.DS_Store

@@ -2,8 +2,10 @@ class AttachmentsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @attachments = Attachment.page(params[:page] || 1).per(3)
+    params[:search] ||= {  }
+    @attachments = Attachment.sort(params[:search][:sort]).page(params[:page] || 1).per(9)
   end
+
   def new
     @attachment = Attachment.new
   end
@@ -41,14 +43,18 @@ class AttachmentsController < ApplicationController
   def destroy
     Attachment.find(params[:id]).destroy
     flash[:success] = "文件删除成功"
+    render 'index'
   end
 
+  def sort_time
+    @attachments = Attachment.all.sort_by(:create_at)
+  end
 
 
   private
   def attachment_params
     params.require(:attachment).permit( :title, :attachment_width, :attachment_width, :attachment_height, :attachment_size,
-                                       :attachment_type, :attachment_name, :attachment_updated_at,:attachment_category, :link)
+                                       :attachment_type, :attachment_name, :attachment_updated_at,:attachment_category, :attachment_content, :link, :tags)
   end
 
 end

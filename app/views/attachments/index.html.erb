@@ -1,3 +1,11 @@
+<script type="text/javascript">
+$(document).ready(function(){
+  $('.btn').click(function(argument) {
+    $('.btn').text("已收藏");
+  })
+}
+</script>
+
 <div class="container">
   <div class="row clearfix">
     <div class="col-md-1 column">
@@ -12,8 +20,8 @@
     <div class="col-md-7 column">
     </div>
     <div class="col-md-3 column">
-      排序： <%= link_to "时间",class: "btn btn-primary" %>
-      <%= link_to "大小",class: "btn btn-primary" %>
+      排序： <%= link_to "时间", attachments_path(search: params[:search].merge(sort: 'created_at')), class: "btn btn-primary" %>
+      <%= link_to "大小", attachments_path(search: params[:search].merge(sort: 'attachment_size')), class: "btn btn-primary" %>
     </div>
     <div class="col-md-1 column">
     </div>
@@ -23,27 +31,12 @@
     </div>
     <div class="col-md-3 column">
       <div class="panel-group" id="accordion">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                  文件类型
-               </a>
-            </h4>
-          </div>
-          <div id="collapseOne" class="panel-collapse collapse in">
-            <div class="panel-body">
-            <li><a>jpg</a></li>
-            <li><a>doc</a></li>
-            <li><a>png</a></li>
-            </div>
-          </div>
-        </div>
+       
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
               <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                图片类别
+                文件类别
               </a>
             </h4>
           </div>
@@ -51,12 +44,35 @@
             <div class="panel-body">
               <li><a>风景</a></li>
               <li><a>人物</a></li>
+              <li><a>卡通</a></li>
+              <li><a>设计</a></li>
+              <li><a>摄影</a></li>
+            </div>
+          </div>
+        </div>
+         <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                文件类型
+              </a>
+            </h4>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse in">
+            <div class="panel-body">
+              <li><a>漂亮</a></li>
+              <li><a>大气</a></li>
+              <li><a>奢华</a></li>
+              <li><a>有内涵</a></li>
+
             </div>
           </div>
         </div>
 
+       
+
         <%= link_to new_attachment_url do %>
-            <button class="btn-danger btn-lg">上传文件</button>
+        <button class="btn-danger btn-lg">上传文件</button>
         <% end %>
       </div>
 
@@ -66,77 +82,31 @@
         <%  @attachments.each  do |f| %>
         <div class="col-md-4">
           <div class="thumbnail">
-            <img alt="300x200" src="http://lorempixel.com/600/200/people" />
+            <div>
+              <%= image_tag(f.link_url, size: "149x112" ,html:{ :"data-src" => "holder.js/300x200" } )%>
+            </div>
+            <!-- <img alt="300x200" src="assets/2.png" /> -->
             <div class="caption">
-              <h3>
+              <h5>
                 <%= f.title %>
-              </h3>
+              </h5>
               <p>
                 <%= f.attachment_category  %>
               </p>
               <p>
                 <%= link_to "打开",attachment_url(f),  class: "btn btn-primary"   %>
 
-                    <a class="btn" href="#">收藏</a>
+                <a class="btn"  href="#">收藏</a>
               </p>
             </div>
           </div>
         </div>
-            <% end %>
+        <% end %>
 
       </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="thumbnail">
-            <img alt="300x200" src="http://lorempixel.com/600/200/people" />
-            <div class="caption">
-              <h3>
-                Thumbnail label
-              </h3>
-              <p>
-                Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-              </p>
-              <p>
-                <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="thumbnail">
-            <img alt="300x200" src="http://lorempixel.com/600/200/city" />
-            <div class="caption">
-              <h3>
-                Thumbnail label
-              </h3>
-              <p>
-                Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-              </p>
-              <p>
-                <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="thumbnail">
-            <img alt="300x200" src="http://lorempixel.com/600/200/sports" />
-            <div class="caption">
-              <h3>
-                Thumbnail label
-              </h3>
-              <p>
-                Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-              </p>
-              <p>
-                <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="pagination pagination-lg">
+
+      <div class="pagination">
         <%= paginate @attachments %>
       </div>
     </div>

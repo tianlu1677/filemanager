@@ -1,22 +1,36 @@
-
+<style type="text/css">
+	#show-atta{
+		
+	
+	}
+</style>
 <div class="container">
-<p id="notice"><%= notice %></p>
+	<div class="col-md-1"></div>
+	<div class="col-md-8">
 
-<p>
-  <strong>attachment name :</strong>
-  <%= @attachment.title %>
-</p>
+		<div id="show-atta">
+			<h2><span class="label label-success"><%= @attachment.title %></span>
+			<%= link_to "下载", @attachment.link_url, class: "btn btn-primary" %></h2>
+			<%= image_tag(@attachment.link_url, size: "400x300",class: "img-rounded") %>
+		</div>
+		<div >
+			<div>
+				<h4><span class="label label-default">文件类别</span></h4>
+				<strong> <%= @attachment.attachment_category %>	</strong>
+			</div>
+			<div>
+				<h4><span class="label label-default">文件标签</span></h4>
+				<strong> <%= @attachment.tags_array.join(" | ") %>	</strong>
+			</div>
+			<div>
+				<h4><span class="label label-default">文件简介</span></h4>
+				<%= @attachment.attachment_content %></span></h4>	
+			</div>
+		</div>
+		<div>
+		<%= link_to '编辑', edit_attachment_path(@attachment),class: "btn btn-primary" %>
 
-<p>
-  <strong>leibie:</strong>
-  <%= @attachment.attachment_category %>
-</p>
-<p>
-  <%=  %>
-  <%= image_tag(@attachment.link_url) %>
-</p>
-
-<%= link_to 'Edit', edit_attachment_path(@attachment) %>
-
-  <%= link_to 'Destroy', @attachment, method: :delete, data: { confirm: 'Are you sure?' } %>
- </div>
+		<%= link_to '删除', @attachment, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+		</div>
+	</div>
+	</div>
