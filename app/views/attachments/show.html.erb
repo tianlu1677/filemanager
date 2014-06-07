@@ -1,36 +1,80 @@
 <style type="text/css">
 	#show-atta{
-		
-	
+		text-align: left;
+		margin-left: 50px;
 	}
 </style>
 <div class="container">
-	<div class="col-md-1"></div>
-	<div class="col-md-8">
+	<div class="col-md-1 column"></div>
+	<div class="col-md-7 column">
 
 		<div id="show-atta">
-			<h2><span class="label label-success"><%= @attachment.title %></span>
-			<%= link_to "下载", @attachment.link_url, class: "btn btn-primary" %></h2>
-			<%= image_tag(@attachment.link_url, size: "400x300",class: "img-rounded") %>
-		</div>
-		<div >
-			<div>
-				<h4><span class="label label-default">文件类别</span></h4>
-				<strong> <%= @attachment.attachment_category %>	</strong>
-			</div>
-			<div>
-				<h4><span class="label label-default">文件标签</span></h4>
-				<strong> <%= @attachment.tags_array.join(" | ") %>	</strong>
-			</div>
-			<div>
-				<h4><span class="label label-default">文件简介</span></h4>
-				<%= @attachment.attachment_content %></span></h4>	
-			</div>
-		</div>
-		<div>
-		<%= link_to '编辑', edit_attachment_path(@attachment),class: "btn btn-primary" %>
 
-		<%= link_to '删除', @attachment, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+			<br/>
+			<br/>
+			<br/>
+			<%= image_tag(@attachment.link_url, size: "400x300",class: "img-thumbnail") %>
+
+			<h2><%= link_to "#{ @attachment.title }", @attachment.link_url, class: "label label-info" %></h2>
+			<dl class="dl-horizontal">
+				<dt>
+					<h4><span class="label label-default">文件类别</span></h4>
+				</dt>
+				<dd>
+					<h4><strong><%= @attachment.attachment_category %>	</strong></h4>
+				<hr/>
+				</dd>
+				
+				<dt>
+					<h4><span class="label label-default">文件标签</span></h4>
+				</dt>
+				<dd>
+					<h4><strong> <%= @attachment.tags_array.join(" | ") %>	</strong></h4>
+				<hr/>
+				</dd>
+				
+				<dt>
+					<h4><span class="label label-default">文件简介</span></h4>
+				</dt>
+				<dd>
+					<h5><strong><%= @attachment.attachment_content %></strong></h5>
+				<hr/>
+				</dd>
+				
+			</dl>
+
+			<div>
+				<%= link_to '编辑', edit_attachment_path(@attachment),class: "btn btn-success btn-lg" %>
+
+				<%= link_to '删除', @attachment, method: :delete, data: { confirm: '你确定要删除?' }, class: "btn btn-warning btn-lg" %>
+			</div>
 		</div>
+<hr/>
+		<div class="media">
+		<h2>评论</h2>
+
+				<div class="media-body">
+					<h4 class="media-heading">
+						昵称: <%= User.last.profile.nickname %>
+					</h4>   看着不错啊
+					<hr/>
+					<textarea class="form-control" ></textarea>
+					<button class="btn btn-default" >发表 </button>
+				</div>
+			</div>
+
 	</div>
+	<div class="col-md-4 column " style="text-align: center; ">
+	   <h2>相关推荐</h2>
+	   
+	   <h3><%= link_to "#{ Attachment.last.title }", attachment_url, class: "label label-info" %></h3>
+		 <%= image_tag(Attachment.last.link_url, size: "230x180",class: "img-rounded") %>
+		  <h3><%= link_to "#{ Attachment.last.title }", attachment_url, class: "label label-info" %></h3>
+		 <%= image_tag(Attachment.first.link_url, size: "230x180",class: "img-rounded") %>
+		  <h3><%= link_to "#{ @attachment.title }", attachment_url, class: "label label-info" %></h3>
+		 <%= image_tag(@attachment.link_url, size: "230x180",class: "img-rounded") %>
+	 
+
+
 	</div>
+</div>

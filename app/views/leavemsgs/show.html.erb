@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Msgname:</strong>
+  <%= @leavemsg.msgname %>
+</p>
+
+<p>
+  <strong>Msgcontent:</strong>
+  <%= @leavemsg.msgcontent %>
+</p>
+
+<%= link_to 'Edit', edit_leavemsg_path(@leavemsg) %> |
+<%= link_to 'Back', leavemsgs_path %>

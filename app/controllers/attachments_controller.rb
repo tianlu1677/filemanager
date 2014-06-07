@@ -14,10 +14,10 @@ class AttachmentsController < ApplicationController
     @attachment = Attachment.new(attachment_params)
 
     if @attachment.save
-      flash[:success] = "上传成功啦！"
+      flash.now[:success] = "上传成功啦！"
       render 'show'
     else
-      false[:fail] = "上传失败，请重新上传"
+      false.now[:fail] = "上传失败，请重新上传"
       render 'new'
     end
   end
@@ -43,7 +43,7 @@ class AttachmentsController < ApplicationController
   def destroy
     Attachment.find(params[:id]).destroy
     flash[:success] = "文件删除成功"
-    render 'index'
+    
   end
 
   def sort_time

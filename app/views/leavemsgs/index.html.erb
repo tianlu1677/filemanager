@@ -1,0 +1,27 @@
+<h1>Listing leavemsgs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Msgname</th>
+      <th>Msgcontent</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @leavemsgs.each do |leavemsg| %>
+      <tr>
+        <td><%= leavemsg.msgname %></td>
+        <td><%= leavemsg.msgcontent %></td>
+        <td><%= link_to 'Show', leavemsg %></td>
+        <td><%= link_to 'Edit', edit_leavemsg_path(leavemsg) %></td>
+        <td><%= link_to 'Destroy', leavemsg, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Leavemsg', new_leavemsg_path %>

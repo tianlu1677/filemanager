@@ -1,9 +1,11 @@
 <script type="text/javascript">
+
 $(document).ready(function(){
-  $('.btn').click(function(argument) {
-    $('.btn').text("已收藏");
-  })
+  $("#collect").change(function(){
+    $(this).text("Hello world!");
+  });
 }
+
 </script>
 
 <div class="container">
@@ -20,8 +22,8 @@ $(document).ready(function(){
     <div class="col-md-7 column">
     </div>
     <div class="col-md-3 column">
-      排序： <%= link_to "时间", attachments_path(search: params[:search].merge(sort: 'created_at')), class: "btn btn-primary" %>
-      <%= link_to "大小", attachments_path(search: params[:search].merge(sort: 'attachment_size')), class: "btn btn-primary" %>
+      排序： <%= link_to "时间", attachments_path(search: params[:search].merge(sort: 'created_at')), class: "btn btn-success" %>
+      <%= link_to "大小", attachments_path(search: params[:search].merge(sort: 'attachment_size')), class: "btn btn-success" %>
     </div>
     <div class="col-md-1 column">
     </div>
@@ -60,18 +62,16 @@ $(document).ready(function(){
           </div>
           <div id="collapseOne" class="panel-collapse collapse in">
             <div class="panel-body">
-              <li><a>漂亮</a></li>
-              <li><a>大气</a></li>
-              <li><a>奢华</a></li>
-              <li><a>有内涵</a></li>
+              <li><a>夏天</a></li>
+              <li><a>冬天</a></li>
+              <li><a>秋天</a></li>
+              <li><a>春天</a></li>
 
             </div>
           </div>
         </div>
-
-       
-
-        <%= link_to new_attachment_url do %>
+       <br/>
+       <%= link_to new_attachment_url do %>
         <button class="btn-danger btn-lg">上传文件</button>
         <% end %>
       </div>
@@ -87,16 +87,15 @@ $(document).ready(function(){
             </div>
             <!-- <img alt="300x200" src="assets/2.png" /> -->
             <div class="caption">
-              <h5>
+              <h4>
                 <%= f.title %>
+              </h4>
+              <h5>
+                <%= f.attachment_category  %>
               </h5>
               <p>
-                <%= f.attachment_category  %>
-              </p>
-              <p>
-                <%= link_to "打开",attachment_url(f),  class: "btn btn-primary"   %>
-
-                <a class="btn"  href="#">收藏</a>
+                <%= link_to "打开",attachment_url(f),  class: "btn btn-primary" %>
+                <button class="btn" id="collect" ><b>收藏</b></button>
               </p>
             </div>
           </div>

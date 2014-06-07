@@ -1,0 +1,2 @@
+module LeavemsgsHelper
+end

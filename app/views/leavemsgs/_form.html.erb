@@ -1,0 +1,38 @@
+
+<div class="container">
+
+<div class="col-md-2"></div>
+<div class="col-md-8">
+<h1>意见与建议</h1>
+
+<%= form_for(@leavemsg) do |f| %>
+  <% if @leavemsg.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@leavemsg.errors.count, "error") %> prohibited this leavemsg from being saved:</h2>
+
+      <ul>
+      <% @leavemsg.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "留言人名字" %><br>
+    <%= f.text_field :msgname, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label "留言内容" %><br>
+    <%=  f.text_area :msgcontent, class: "form-control", placeholder: "最多500字", size: "10x5"  %>
+
+  </div>
+  <div class="actions">
+     <%= f.submit "保存",class: "btn btn-large btn-primary" %>
+    <%= link_to "返回", attachments_url, class: "btn btn-default" %>
+
+  </div>
+<% end %>
+</div>
+<div class="col-md-2"></div>
+</div>
