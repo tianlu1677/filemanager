@@ -50,7 +50,6 @@ class AttachmentsController < ApplicationController
     @attachments = Attachment.all.sort_by(:create_at)
   end
 
-
   private
   def attachment_params
     params.require(:attachment).permit( :title, :attachment_width, :attachment_width, :attachment_height, :attachment_size,
